@@ -7,8 +7,15 @@ import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/route_manager.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen>{
+  bool? isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +44,13 @@ class SignupScreen extends StatelessWidget {
                   children: [
                     Checkbox(
                       checkColor: redColor,
-                      value: false,
-                      onChanged: (newValue) {},
+                      value: isCheck,
+                      onChanged: (newValue) {
+                        setState(() {
+                          isCheck = newValue;
+                        });
+                        
+                      },
                     ),
                     10.widthBox,
                     Expanded(
@@ -47,25 +59,25 @@ class SignupScreen extends StatelessWidget {
                         TextSpan(
                             text: "I agree to the ",
                             style:
-                                TextStyle(fontFamily: bold, color: fontGrey)),
+                                TextStyle(fontFamily: regular, color: fontGrey)),
                         TextSpan(
                             text: termAndCond,
                             style:
-                                TextStyle(fontFamily: bold, color: redColor)),
+                                TextStyle(fontFamily: regular, color: redColor)),
                         TextSpan(
                             text: " & ",
                             style:
-                                TextStyle(fontFamily: bold, color: fontGrey)),
+                                TextStyle(fontFamily: regular, color: fontGrey)),
                         TextSpan(
                             text: privacyPolicy,
-                            style: TextStyle(fontFamily: bold, color: redColor))
+                            style: TextStyle(fontFamily: regular, color: redColor))
                       ])),
                     ),
                   ],
                 ),
                 5.heightBox,
                 ourButton(
-                        color: redColor,
+                        color: isCheck == true ? redColor : lightGrey,
                         title: signup,
                         textColor: whiteColor,
                         onPress: () {})
@@ -74,20 +86,16 @@ class SignupScreen extends StatelessWidget {
                     .make(),
                 10.heightBox,
                 //wrapping into gesture detector of velocity x
-                RichText(
-                  text: const TextSpan(
-                    children: [
-                      TextSpan(
-                          text: alreadyHaveAccount,
-                          style: TextStyle(fontFamily: bold, color: fontGrey)),
-                      TextSpan(
-                          text: login,
-                          style: TextStyle(fontFamily: bold, color: redColor))
-                    ],
-                  ),
-                ).onTap(() {
-                  Get.back();
-                })
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    alreadyHaveAccount.text.color(fontGrey).make(),
+                    login.text.color(redColor).make().onTap(() {
+                      Get.back();
+                    }),
+                  ],
+                ),
               ],
             )
                 .box
