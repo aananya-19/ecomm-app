@@ -18,7 +18,42 @@ const termAndCond = "Terms and Conditions";
 const alreadyHaveAccount = "Already have an accunt?";
 
 //home strings
-const home = "Home", categories = "Categories", cart = "Cart", account = "Account";
+const home = "Home",
+    categories = "Categories",
+    cart = "Cart",
+    account = "Account";
 
 //home screen strings
-const searchanything = "Search anything...", todayDeal = "Today's Deal", flashSale = "Flash Sale", topBrand = "Top Brand", topSellers = "Top Sellers", topCategories = "Top Categories", featuredCategories = "Featured Categories";
+const searchanything = "Search anything...",
+    todayDeal = "Today's Deal",
+    flashSale = "Flash Sale",
+    topBrand = "Top Brand",
+    topSellers = "Top Sellers",
+    topCategories = "Top Categories",
+    womenDress = "Women Dress",
+    girlsWatches = "Girls Watches",
+    mobilePhone = "Mobile Phone",
+    boysGlasses = "Boys Glasses",
+    tShirts = "T-Shirts",
+    girlsDress = "Girls Dresses",
+    featuredProduct = "Featured Product",
+    featuredCategories = "Featured Categories";
+
+//category screen strings
+const womenClothing = "Women Clothing",
+    menClothingFashion = "Men Clothing & Fashion",
+    compAccess = "Computer & Accessories",
+    automobile = "Automobile",
+    kidtoys = "Kids Toys",
+    sports = "Sports",
+    jewelley = "Jewellery",
+    cellphone = "Cellphone & Tab",
+    furniture = "Furniture";
+
+//item details screen strings
+const video = "Video",
+    reviews = "Reviews",
+    sellerpolicy = "Seller Policy",
+    returnPolicy = " Return Policy ",
+    supportPolicy = "Support Policy",
+    productsyoumaylike = "Products you may like";
