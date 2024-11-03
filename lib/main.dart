@@ -7,10 +7,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: const FirebaseOptions(
-    apiKey: 'apikey',
-    appId: 'appId',
+    apiKey: 'AIzaSyCEqdjLNFQyK-TohU37YuPzoxOs17Tjf6w',
+    appId: '1:86687226452:android:efe15289fc6a7f4774ebc1',
     messagingSenderId: 'messagingSenderId',
-    projectId: 'projectId',
+    projectId: 'emart-7319e',
     storageBucket: 'storageBucket',
   ));
   runApp(const MyApp());
