@@ -15,8 +15,6 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProfileController>();
-    controller.nameController.text = data['name'];
-    controller.passController.text = data['password'];
 
     return bgWidget(
         child: Scaffold(
@@ -25,17 +23,24 @@ class EditProfileScreen extends StatelessWidget {
         () => Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            controller.profileImgPath.isEmpty
+            data['imageUrl'] == '' && controller.profileImgPath.isEmpty
                 ? Image.asset(imgProfile2, width: 100, fit: BoxFit.cover)
                     .box
                     .roundedFull
                     .clip(Clip.antiAlias)
                     .make()
-                : Image.file(
-                    File(controller.profileImgPath.value),
-                    width: 100,
-                    fit: BoxFit.cover,
-                  ).box.roundedFull.clip(Clip.antiAlias).make(),
+                : data['imageUrl'] != '' && controller.profileImgPath.isEmpty
+                    ? Image.network(data['imageUrl'],
+                            width: 100, fit: BoxFit.cover)
+                        .box
+                        .roundedFull
+                        .clip(Clip.antiAlias)
+                        .make()
+                    : Image.file(
+                        File(controller.profileImgPath.value),
+                        width: 100,
+                        fit: BoxFit.cover,
+                      ).box.roundedFull.clip(Clip.antiAlias).make(),
             10.heightBox,
             ourButton(
                 color: redColor,
@@ -51,20 +56,39 @@ class EditProfileScreen extends StatelessWidget {
                 hint: nameHint,
                 title: name,
                 isPass: false),
+            10.heightBox,
             customTextField(
-                controller: controller.passController,
-                hint: password,
-                title: password,
+                controller: controller.oldpassController,
+                hint: passwordHint,
+                title: oldpass,
+                isPass: true),
+            10.heightBox,
+            customTextField(
+                controller: controller.oldpassController,
+                hint: passwordHint,
+                title: newpass,
                 isPass: true),
             20.heightBox,
-            SizedBox(
-              width: context.screenWidth - 60,
-              child: ourButton(
-                  color: redColor,
-                  onPress: () {},
-                  textColor: whiteColor,
-                  title: "Save"),
-            ),
+            controller.isloading.value
+                ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(redColor),
+                  )
+                : SizedBox(
+                    width: context.screenWidth - 60,
+                    child: ourButton(
+                        color: redColor,
+                        onPress: () async {
+                          controller.isloading(true);
+                          //await controller.uploadProfileImage();
+                          await controller.updateProfile(
+                              imgUrl: controller.profileImageLink,
+                              name: controller.nameController.text,
+                              password: controller.newpassController.text);
+                          VxToast.show(context, msg: "Updated");
+                        },
+                        textColor: whiteColor,
+                        title: "Save"),
+                  ),
           ],
         )
             .box
