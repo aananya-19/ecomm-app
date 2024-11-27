@@ -157,36 +157,46 @@ class ItemDetails extends StatelessWidget {
                                   "Quantity: ".text.color(textfieldGrey).make(),
                             ),
                             Obx(
-                              () => Row(
-                                children: [
-                                  IconButton(
+                              () {
+                                // Debugging the value of controller.quantity
+                                print(
+                                    'Current quantity value: ${controller.quantity.value}');
+
+                                return Row(
+                                  children: [
+                                    IconButton(
                                       onPressed: () {
                                         controller.decreaseQuantity();
                                         controller.calculateTotalPrice(
                                             int.parse(data['p_price']));
                                       },
-                                      icon: const Icon(Icons.remove)),
-                                  controller.quantity.value.text
-                                      .size(16)
-                                      .color(darkFontGrey)
-                                      .fontFamily(bold)
-                                      .make(),
-                                  IconButton(
+                                      icon: const Icon(Icons.remove),
+                                    ),
+                                    Text(
+                                      controller.quantity.value.toString(),
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: darkFontGrey,
+                                        fontFamily: bold,
+                                      ),
+                                    ),
+                                    IconButton(
                                       onPressed: () {
                                         controller.increaseQuantity(
-                                          int.parse(data['p_quantity']),
-                                        );
+                                            int.parse(data['p_quantity']));
                                         controller.calculateTotalPrice(
                                             int.parse(data['p_price']));
                                       },
-                                      icon: const Icon(Icons.add)),
-                                  10.widthBox,
-                                  "(${data['p_quantity']}available)"
-                                      .text
-                                      .color(textfieldGrey)
-                                      .make(),
-                                ],
-                              ),
+                                      icon: const Icon(Icons.add),
+                                    ),
+                                    10.widthBox,
+                                    "${data['p_quantity']} available"
+                                        .text
+                                        .color(textfieldGrey)
+                                        .make(),
+                                  ],
+                                );
+                              },
                             ),
                           ],
                         ).box.padding(const EdgeInsets.all(8)).make(),
@@ -198,13 +208,21 @@ class ItemDetails extends StatelessWidget {
                               width: 100,
                               child: "Total: ".text.color(textfieldGrey).make(),
                             ),
-                            "\${controller.totalPrice.value}"
-                                .numCurrency
-                                .text
-                                .color(redColor)
-                                .size(16)
-                                .fontFamily(bold)
-                                .make(),
+                            (controller.totalPrice.value != null)
+                                ? "${controller.totalPrice.value}"
+                                    .numCurrency
+                                    .text
+                                    .color(redColor)
+                                    .size(16)
+                                    .fontFamily(bold)
+                                    .make()
+                                : "0"
+                                    .numCurrency
+                                    .text
+                                    .color(redColor)
+                                    .size(16)
+                                    .fontFamily(bold)
+                                    .make(), // Default to 0 if totalPrice is null
                           ],
                         ).box.padding(const EdgeInsets.all(8)).make(),
                       ],
