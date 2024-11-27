@@ -1,0 +1,59 @@
+{
+    "categories":[
+        {
+            "name": "Women Dress",
+            "subcategory":[
+                "wedding & events",
+                "Tops & Sets",
+                "Watches"
+            ]
+        },
+        {
+            "name": "Men Clothing & Fashion",
+            "subcategory":[
+                "Outwear & Jackets",
+                "Formal Dress",
+                "Accessories"
+            ]
+        },
+        {
+            "name": "Computer & accessories",
+            "subcategory":[
+                "Laptop",
+                "Gaming PC",
+                "Official Equipment"
+            ]
+        },
+        {
+            "name": "Mobile & Accessories",
+            "subcategory":[
+                "Smartphone",
+                "Tablet",
+                "Smartwatch"
+            ]
+        },
+        {
+            "name": "Home & Garden",
+            "subcategory":[
+                "Home Decor",
+                "Kitchen & Dining",
+                "Furniture"
+            ]
+        },
+        {
+            "name": "Health & Beauty",
+            "subcategory":[
+                "Makeup",
+                "Skin Care",
+                "Hair Care"
+            ]
+        },
+        {
+            "name": "Toys & Kids",
+            "subcategory":[
+                "Baby Toys",
+                "Educational Toys"
+            ]
+        }
+    ]
+}
