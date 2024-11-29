@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/views/cart_screen/payment_method.dart';
 import 'package:emart_app/views/category_screen/item_details.dart';
 
 const socialIconList = [icFacebookLogo, icGoogleLogo, icTwitterLogo];
@@ -47,3 +48,8 @@ const ItemDetailButtonsList = [
 
 const profileButtonsList = [orders, wishlist, messages];
 const profileButtonsIcon = [icOrder, icOrder, icMessages];
+
+
+const paymentMethodsImg=[imgPaypal, imgStripe, imgCod];
+const paymentMethods=[paypal, stripe, cod];
+

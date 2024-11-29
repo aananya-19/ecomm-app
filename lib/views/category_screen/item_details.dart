@@ -10,8 +10,8 @@ import 'package:get/get.dart';
 class ItemDetails extends StatelessWidget {
   final String? title;
   final dynamic data;
-  const ItemDetails({Key? key, required this.title, this.data})
-      : super(key: key);
+  const ItemDetails({Key? key, required this.title, this.data}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,23 @@ class ItemDetails extends StatelessWidget {
           title: title!.text.color(darkFontGrey).fontFamily(bold).make(),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_outline)),
+            Obx(
+              () => IconButton(
+                onPressed: () {
+                  if(controller.isFav.value){
+                    controller.removeFromWishlist(data.id, context);
+                    controller.isFav(false);
+                  }
+                  else{
+                    controller.addToWishlist(data.id, context);
+                    controller.isFav(true);  
+                  }
+
+                }, icon: Icon(
+                  Icons.favorite_outlined,
+                  color: controller.isFav.value ? redColor : darkFontGrey,
+                )),
+            )
           ],
         ),
         body: Column(

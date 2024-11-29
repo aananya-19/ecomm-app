@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/controller/cart_controller.dart';
 import 'package:emart_app/services/firestore_services.dart';
+import 'package:emart_app/views/cart_screen/shipping_screen.dart';
 import 'package:emart_app/widgets_common/loading_indicator.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,17 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: whiteColor,
+      bottomNavigationBar: SizedBox(
+        height: 50,
+        child: ourButton(
+                color: redColor,
+                onPress: (){
+                  Get.to(() => const ShippingDetails());
+                },
+                textColor: whiteColor,
+                title: "Proceed to shipping",
+        ),
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: "Shopping cart".text.fontFamily(semibold).color(darkFontGrey).make(),
@@ -36,6 +48,7 @@ class CartScreen extends StatelessWidget {
         } else{
           var data = snapshot.data!.docs;
           controller.calculate(data);
+          controller.productSnapshot=data;
 
           return Padding(
         padding: const EdgeInsets.all(8.0),
@@ -69,15 +82,15 @@ class CartScreen extends StatelessWidget {
               ],
             ).box.padding(EdgeInsets.all(12)).color(lightGolden).roundedSM.make(),
             10.heightBox,
-            SizedBox(
-              width: context.screenWidth - 60,
-              child: ourButton(
-                color: redColor,
-                onPress: (){},
-                textColor: whiteColor,
-                title: "Proceed to shipping"
-              ),
-            )
+            // SizedBox(
+            //   width: context.screenWidth - 60,
+            //   child: ourButton(
+            //     color: redColor,
+            //     onPress: (){},
+            //     textColor: whiteColor,
+            //     title: "Proceed to shipping"
+            //   ),
+            // )
           ],
         ),
       );
