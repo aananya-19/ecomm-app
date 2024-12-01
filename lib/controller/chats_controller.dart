@@ -3,10 +3,9 @@ import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/controller/home_controller.dart';
 import 'package:get/get.dart';
 
-class ChatsController extends GetxController{
-
+class ChatsController extends GetxController {
   @override
-  void OnInit(){
+  void OnInit() {
     getChatId();
     super.onInit();
   }
@@ -24,40 +23,31 @@ class ChatsController extends GetxController{
 
   var isLoading = false.obs;
 
-  getChatId() async{
-
+  getChatId() async {
     isLoading(true);
 
-
-
-
-    await chats.where('users', isEqualTo: {
-      friendId: null,
-      currentId: null
-    }
-    ).limit(1).get().then((QuerySnapshot snapshot){
-      if(snapshot.docs.isNotEmpty){
-        chatDocId = snapshot.docs.single.id;
-      }else{
-        chats.add({
-          'created on': null,
-          'last_msg': '',
-          'users': {friendId: null, currentId: null},
-          'toId': '',
-          'fromId': '',
-          'friend_name': friendName,
-          'sender_name': senderName
-        }).then((value){
-          chatDocId = value.id;
+    await chats.where('users', isEqualTo: {friendId: null, currentId: null}).limit(1).get().then((QuerySnapshot snapshot) {
+          if (snapshot.docs.isNotEmpty) {
+            chatDocId = snapshot.docs.single.id;
+          } else {
+            chats.add({
+              'created on': null,
+              'last_msg': '',
+              'users': {friendId: null, currentId: null},
+              'toId': '',
+              'fromId': '',
+              'friend_name': friendName,
+              'sender_name': senderName
+            }).then((value) {
+              chatDocId = value.id;
+            });
+          }
         });
-      }
-    });
     isLoading(false);
   }
 
-
-  sendMsg(String msg) async{
-    if(msg.trim().isNotEmpty){
+  sendMsg(String msg) async {
+    if (msg.trim().isNotEmpty) {
       chats.doc(chatDocId).update({
         'created_on': FieldValue.serverTimestamp(),
         'last_msg': msg,
@@ -70,8 +60,6 @@ class ChatsController extends GetxController{
         'msg': msg,
         'uid': currentId,
       });
-
     }
   }
-
 }

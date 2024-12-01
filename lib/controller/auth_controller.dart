@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-
   var isLoading = false.obs;
 
   //textcontrollers
@@ -17,8 +16,7 @@ class AuthController extends GetxController {
     UserCredential? userCredential;
 
     try {
-      userCredential = await auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
+      userCredential = await auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }
@@ -31,8 +29,7 @@ class AuthController extends GetxController {
     UserCredential? userCredential;
 
     try {
-      userCredential = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }
@@ -41,8 +38,7 @@ class AuthController extends GetxController {
 
   //storing data method
   storeUserData({name, password, email}) async {
-    DocumentReference store =
-        firestore.collection(usersCollection).doc(currentUser!.uid);
+    DocumentReference store = firestore.collection(usersCollection).doc(currentUser!.uid);
     store.set(
       {
         'name': name,

@@ -14,42 +14,24 @@ const featuredImages2 = [imgS4, imgS5, imgS6];
 const featuredTitles1 = [womenDress, girlsDress, girlsWatches];
 const featuredTitles2 = [mobilePhone, boysGlasses, tShirts];
 
-const categoriesList = [
-  womenDress,
-  menClothingFashion,
-  compAccess,
-  automobile,
-  kidtoys,
-  sports,
-  jewelley,
-  cellphone,
-  furniture
-];
+const categoriesList = [womenDress, menClothingFashion, compAccess, automobile, kidtoys, sports, jewelley, cellphone, furniture];
 
 const categoryImages = [
+  'assets/images/womendressimg.png',
   imgFc1,
   imgFc2,
   imgFc3,
   imgFc4,
   imgFc5,
+  'assets/images/jewelleryimg.jpg',
   imgFc6,
-  imgFc7,
-  imgFc8,
   imgFc9,
 ];
 
-const ItemDetailButtonsList = [
-  video,
-  reviews,
-  sellerpolicy,
-  returnPolicy,
-  supportPolicy
-];
+const ItemDetailButtonsList = [video, reviews, sellerpolicy, returnPolicy, supportPolicy];
 
 const profileButtonsList = [orders, wishlist, messages];
 const profileButtonsIcon = [icOrder, icOrder, icMessages];
 
-
-const paymentMethodsImg=[imgPaypal, imgStripe, imgCod];
-const paymentMethods=[paypal, stripe, cod];
-
+const paymentMethodsImg = [imgPaypal, imgStripe, imgCod];
+const paymentMethods = [paypal, stripe, cod];

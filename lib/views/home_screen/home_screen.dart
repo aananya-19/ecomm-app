@@ -48,12 +48,7 @@ class HomeScreen extends StatelessWidget {
                       return Image.asset(
                         slidersList[index],
                         fit: BoxFit.fitWidth,
-                      )
-                          .box
-                          .rounded
-                          .clip(Clip.antiAlias)
-                          .margin(const EdgeInsets.symmetric(horizontal: 8))
-                          .make();
+                      ).box.rounded.clip(Clip.antiAlias).margin(const EdgeInsets.symmetric(horizontal: 8)).make();
                     }),
 
                 10.heightBox,
@@ -82,12 +77,7 @@ class HomeScreen extends StatelessWidget {
                       return Image.asset(
                         secondSlidersList[index],
                         fit: BoxFit.fill,
-                      )
-                          .box
-                          .rounded
-                          .clip(Clip.antiAlias)
-                          .margin(const EdgeInsets.symmetric(horizontal: 8))
-                          .make();
+                      ).box.rounded.clip(Clip.antiAlias).margin(const EdgeInsets.symmetric(horizontal: 8)).make();
                     }),
 
                 20.heightBox,
@@ -115,11 +105,7 @@ class HomeScreen extends StatelessWidget {
                 20.heightBox,
                 Align(
                     alignment: Alignment.centerLeft,
-                    child: featuredCategories.text
-                        .color(darkFontGrey)
-                        .size(18)
-                        .fontFamily(semibold)
-                        .make()),
+                    child: featuredCategories.text.color(darkFontGrey).size(18).fontFamily(semibold).make()),
 
                 20.heightBox,
                 SingleChildScrollView(
@@ -129,13 +115,9 @@ class HomeScreen extends StatelessWidget {
                       3,
                       (index) => Column(
                         children: [
-                          featuredButton(
-                              icon: featuredImages1[index],
-                              title: featuredTitles1[index]),
+                          featuredButton(icon: featuredImages1[index], title: featuredTitles1[index]),
                           10.heightBox,
-                          featuredButton(
-                              icon: featuredImages2[index],
-                              title: featuredTitles2[index]),
+                          featuredButton(icon: featuredImages2[index], title: featuredTitles2[index]),
                         ],
                       ),
                     ).toList(),
@@ -152,10 +134,7 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      featuredProduct.text.white
-                          .fontFamily(bold)
-                          .size(18)
-                          .make(),
+                      featuredProduct.text.white.fontFamily(bold).size(18).make(),
                       10.heightBox,
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -163,30 +142,18 @@ class HomeScreen extends StatelessWidget {
                           children: List.generate(
                               6,
                               (index) => Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Image.asset(imgP1,
-                                          width: 150, fit: BoxFit.cover),
+                                      Image.asset(imgP1, width: 150, fit: BoxFit.cover),
                                       10.heightBox,
-                                      "Laptop 4GB/64GB"
-                                          .text
-                                          .fontFamily(semibold)
-                                          .color(darkFontGrey)
-                                          .make(),
+                                      "Laptop 4GB/64GB".text.fontFamily(semibold).color(darkFontGrey).make(),
                                       10.heightBox,
-                                      "\$600"
-                                          .text
-                                          .color(redColor)
-                                          .fontFamily(bold)
-                                          .size(16)
-                                          .make(),
+                                      "\$600".text.color(redColor).fontFamily(bold).size(16).make(),
                                     ],
                                   )
                                       .box
                                       .white
-                                      .margin(const EdgeInsets.symmetric(
-                                          horizontal: 4))
+                                      .margin(const EdgeInsets.symmetric(horizontal: 4))
                                       .roundedSM
                                       .padding(const EdgeInsets.all(8))
                                       .make()),
@@ -208,12 +175,7 @@ class HomeScreen extends StatelessWidget {
                       return Image.asset(
                         secondSlidersList[index],
                         fit: BoxFit.fill,
-                      )
-                          .box
-                          .rounded
-                          .clip(Clip.antiAlias)
-                          .margin(const EdgeInsets.symmetric(horizontal: 8))
-                          .make();
+                      ).box.rounded.clip(Clip.antiAlias).margin(const EdgeInsets.symmetric(horizontal: 8)).make();
                     }),
 
                 //all products section
@@ -222,43 +184,25 @@ class HomeScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 6,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 8,
-                            crossAxisSpacing: 8,
-                            mainAxisExtent: 300),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8, mainAxisExtent: 300),
                     itemBuilder: (context, index) {
                       (index) => Column(
-                                   
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset(imgP5,
-                                          width: 200, height: 200, fit: BoxFit.cover),
-                                      const Spacer(),
-                                      "Laptop 4GB/64GB"
-                                          .text
-                                          .fontFamily(semibold)
-                                          .color(darkFontGrey)
-                                          .make(),
-                                      10.heightBox,
-                                      "\$600"
-                                          .text
-                                          .color(redColor)
-                                          .fontFamily(bold)
-                                          .size(16)
-                                          .make(),
-                                    ],
-                                  )
-                                      .box
-                                      .white
-                                      .margin(const EdgeInsets.symmetric(
-                                          horizontal: 4))
-                                      .roundedSM
-                                      .padding(const EdgeInsets.all(8))
-                                      .make();
-                        
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(imgP5, width: 200, height: 200, fit: BoxFit.cover),
+                              const Spacer(),
+                              "Laptop 4GB/64GB".text.fontFamily(semibold).color(darkFontGrey).make(),
+                              10.heightBox,
+                              "\$600".text.color(redColor).fontFamily(bold).size(16).make(),
+                            ],
+                          )
+                              .box
+                              .white
+                              .margin(const EdgeInsets.symmetric(horizontal: 4))
+                              .roundedSM
+                              .padding(const EdgeInsets.all(8))
+                              .make();
                     }),
               ],
             ),

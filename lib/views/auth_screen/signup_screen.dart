@@ -43,30 +43,11 @@ class _SignupScreenState extends State<SignupScreen> {
             Obx(
               () => Column(
                 children: [
-                  customTextField(
-                      hint: nameHint,
-                      title: name,
-                      controller: nameController,
-                      isPass: false),
-                  customTextField(
-                      hint: emailHint,
-                      title: email,
-                      controller: emailController,
-                      isPass: false),
-                  customTextField(
-                      hint: passwordHint,
-                      title: password,
-                      controller: passwordController,
-                      isPass: true),
-                  customTextField(
-                      hint: passwordHint,
-                      title: retypePassword,
-                      controller: passwordRetypeController,
-                      isPass: true),
-                  Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                          onPressed: () {}, child: forgetPass.text.make())),
+                  customTextField(hint: nameHint, title: name, controller: nameController, isPass: false),
+                  customTextField(hint: emailHint, title: email, controller: emailController, isPass: false),
+                  customTextField(hint: passwordHint, title: password, controller: passwordController, isPass: true),
+                  customTextField(hint: passwordHint, title: retypePassword, controller: passwordRetypeController, isPass: true),
+                  Align(alignment: Alignment.centerRight, child: TextButton(onPressed: () {}, child: forgetPass.text.make())),
                   //ourButton().box.width(context.screenWidth - 50).make(),
 
                   Row(
@@ -84,22 +65,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       Expanded(
                         child: RichText(
                             text: const TextSpan(children: [
-                          TextSpan(
-                              text: "I agree to the ",
-                              style: TextStyle(
-                                  fontFamily: regular, color: fontGrey)),
-                          TextSpan(
-                              text: termAndCond,
-                              style: TextStyle(
-                                  fontFamily: regular, color: redColor)),
-                          TextSpan(
-                              text: " & ",
-                              style: TextStyle(
-                                  fontFamily: regular, color: fontGrey)),
-                          TextSpan(
-                              text: privacyPolicy,
-                              style: TextStyle(
-                                  fontFamily: regular, color: redColor))
+                          TextSpan(text: "I agree to the ", style: TextStyle(fontFamily: regular, color: fontGrey)),
+                          TextSpan(text: termAndCond, style: TextStyle(fontFamily: regular, color: redColor)),
+                          TextSpan(text: " & ", style: TextStyle(fontFamily: regular, color: fontGrey)),
+                          TextSpan(text: privacyPolicy, style: TextStyle(fontFamily: regular, color: redColor))
                         ])),
                       ),
                     ],
@@ -117,16 +86,8 @@ class _SignupScreenState extends State<SignupScreen> {
                             if (isCheck != false) {
                               controller.isLoading(true);
                               try {
-                                await controller
-                                    .signupMethod(
-                                        context: context,
-                                        email: emailController.text,
-                                        password: passwordController.text)
-                                    .then((value) {
-                                  return controller.storeUserData(
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                      name: nameController.text);
+                                await controller.signupMethod(context: context, email: emailController.text, password: passwordController.text).then((value) {
+                                  return controller.storeUserData(email: emailController.text, password: passwordController.text, name: nameController.text);
                                 }).then((value) {
                                   VxToast.show(context, msg: loggedin);
                                   Get.offAll(() => const Home());
@@ -151,14 +112,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ],
                   ),
                 ],
-              )
-                  .box
-                  .white
-                  .rounded
-                  .padding(const EdgeInsets.all(16))
-                  .width(context.screenWidth - 70)
-                  .shadowSm
-                  .make(),
+              ).box.white.rounded.padding(const EdgeInsets.all(16)).width(context.screenWidth - 70).shadowSm.make(),
             )
           ],
         ),
